@@ -1,9 +1,10 @@
 close all;
-konsola = 1;
+konsola = 0;
 zespolone = 0;
+portret_okregi = 1;
 
 %konstruowanie macierzy o zadanym widmie
-widmo = [0.1i -0.2i];
+widmo = [-1 0.1];
 wektory_wl = [0.1 0.2 ; 3.2 -0.4];
 A = macierz_z_widma(widmo,wektory_wl);
 
@@ -29,11 +30,11 @@ if konsola
 end
 
 %okreslanie zbioru punktow poczatkowych na okregu
-promien_okregu = 10;
-liczba_punktow = 4;
+promien_okregu = 1;
+liczba_punktow = 10;
 p0 = generuj_punkty_pocz(promien_okregu,liczba_punktow);
 
-%obliczanie trajektorii ukladu dla p0unktow poczatkowych
+%obliczanie trajektorii ukladu dla punktow poczatkowych
 for i = 1:size(p0)(1)
     trajektoria = trajektoria_z_punktu_pocz(p0(i,:)',A,10);
     if konsola
@@ -63,10 +64,15 @@ if !any(any(imag(A)))
     rysuj_trajektorie(p0, A, 1, 25);
 
     %ilustracja obrazu z(theta)
-    f2=figure(2);
-    hold on;
-    set(f2,'Name','Okrag jednostkowy Az(theta)','NumberTitle','off');
-    okrag_jednostkowy(A,2);
+    if portret_okregi
+        okrag_jednostkowy(A,1);
+    else
+        f2=figure(2);
+        hold on;
+        set(f2,'Name','Okrag jednostkowy Az(theta)','NumberTitle','off');
+        okrag_jednostkowy(A,1);
+        legend('okrąg Az(theta)','okrąg jednostkowy');
+    end
 end
 
 if !any(any(imag(wektory_wl))) && !any(any(imag(widmo))) 

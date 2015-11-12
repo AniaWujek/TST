@@ -11,6 +11,6 @@ function a = okrag_jednostkowy(macierzA, figura)
     end
     plot(rysuj_punkty(:,1),rysuj_punkty(:,2),'r');
     plot(punkty(:,1),punkty(:,2));
-    legend('okrąg ','okrąg jednostkowy');
+    
     
 end

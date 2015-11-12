@@ -9,6 +9,6 @@ function rysuj_wektory(wekt_wlasne, wart_wlasne, figura)
     end
     ppoczX = zeros(size(wekt_wlasne)(2),1);
     ppoczY = zeros(size(wekt_wlasne)(2),1);
-    quiver(ppoczX,ppoczY,do_rysowania(:,1),do_rysowania(:,2),0);   
+    quiver(ppoczX,ppoczY,do_rysowania(:,1),do_rysowania(:,2),1);   
     
 end

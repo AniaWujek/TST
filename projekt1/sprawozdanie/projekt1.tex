@@ -8,12 +8,73 @@
 \usepackage{listings}
 \usepackage{amsfonts}
 \usepackage{geometry}
+\usepackage{subfigure}
 
-\newgeometry{tmargin=3cm, bmargin=3cm, lmargin=2cm, rmargin=2cm}
+\newgeometry{tmargin=1cm, bmargin=1cm, lmargin=1cm, rmargin=1cm}
 
 \begin{document}
 	
-	\paragraph{Interpretacja wartości własnych}
+	\paragraph{Skrypt}
+	\begin{itemize}
+		\item Skrypt konstruuje macierz A wg wzoru $A = VDV^{-1}$, gdzie $V$ - podana macierz wektorów własnych, $D$ - macierz diagonalna z podanymi wartościami własnymi. Jeśli w widmie są wartości zespolone, należy podać je w formie $\sigma(A)={(a+bi),(a-bi)}$ i zwracana jest macierz $[a,b;-b,a]$
+		\item Wygenerowane punkty początkowe są rozmieszczone równomiernie na okręgu o zadanym promieniu.
+		\item Trajektoria układu obliczana jest jako ciąg $x(t)=A^tx_0$, gdzie $x(0)=x_0$, $t = 0,1,2,3,...$ dla kolejnych podanych punktów początkowych $x_0$.
+		\item Wektory własne obliczane są przy pomocy funkcji \verb|eig(A)|.
+		\item Ilustrację trajektorii w przestrzeni stanów stanowi wykres ze zmiennymi stanu na osiach, pokazujący wzajemną zależność między nimi w czasie. Wykonywany dla różnych punktów początkowych, tworzy portret fazowy.
+		\item Wykres $Az(\theta)$ rysowany jest na tle okręgu jednostkowego.
+		\item Wektory $\lambda _iv_i,\quad \lambda _i \in \sigma (A)$ zostały przedstawione zarówno dla wektorów podanych przy tworzeniu macierzy, jak i dla wektorów obliczonych przez funkcję \verb|eig(A)|.
+		\item Pole wektorowe rysowane jest dla siatki punktów początkowych (a nie dla okręgu) dla lepszej czytelności.
+	\end{itemize}
+	
+	\paragraph{Interpretacja wartości własnych i wektorów własnych}
+	
+	\paragraph{Zależność dynamiki od widma macierzy A}
+	\begin{itemize}
+		\item od wartości własnych zależy kształt dynamiki układu wokół punktów osobliwych, co jest dobrze widoczne na rysunku pola wektorowego. Dla podanego zadania jedynym punktem osobliwym jest $(0,0)$. Wektory pokazują kierunek zmian na płaszczyźnie fazowej.
+		\begin{itemize}
+			\item $\lambda _1, \lambda _2$ - rzeczywiste, mniejsze od 0 - węzeł stabilny
+			\item $\lambda _1, \lambda _2$ - rzeczywiste, większe od 0 - węzeł niestabilny
+			\item $\lambda _1, \lambda _2$ - rzeczywiste, jedna $>0$, druga $<0$ - siodło
+			\item $\lambda _1, \lambda _2$ - zespolone sprzężone, z ujemną częścią rzeczywistą - ognisko stabilne
+			\item $\lambda _1, \lambda _2$ - zespolone sprzężone, z dodatnią częścią rzeczywistą - ognisko niestabilne
+			\item $\lambda _1, \lambda _2$ - zespolone sprzężone, z zerową częścią rzeczywistą - środek (oscylacje)
+		\end{itemize}
+		\begin{figure}[h]
+			\begin{center}
+				\subfigure[Węzeł stabilny]{
+					\includegraphics[width=0.3\linewidth]{img/wektory_wezel_stabilny.jpg}}
+				\subfigure[Węzeł niestabilny]{
+					\includegraphics[width=0.3\linewidth]{img/wektory_wezel_niestabilny.jpg}}
+				\subfigure[Siodło]{
+					\includegraphics[width=0.3\linewidth]{img/wektory_siodlo.jpg}}
+				\subfigure[Ognisko stabilne]{
+					\includegraphics[width=0.3\linewidth]{img/wektory_ognisko_stabilne.jpg}}
+				\subfigure[Ognisko niestabilne]{
+					\includegraphics[width=0.3\linewidth]{img/wektory_ognisko_niestabilne.jpg}}
+				\subfigure[Środek]{
+					\includegraphics[width=0.3\linewidth]{img/wektory_srodek.jpg}}
+				\caption{Pola wektorowe}
+			\end{center}
+		\end{figure}
+		\item Aby układ był stabilny, wszystkie wartości własne muszą leżeć na płaszczyźnie zespolonej w kole jednostkowym. Jeśli chociaż jedna ma moduł $>1$, układ staje się niestabilny. Jeśli obie wartości własne mają moduły $=1$, układ oscyluje na wykresie $Az(\theta), \theta \in (0,2\pi)$ i nie zbiega do żadnej wartości. Jeśli jedna z wartości ma moduł $<1$, a druga $=1$, układ nie zbiega do 0 ani nie rozbiega się do nieskończoności, tylko w zależności od punktu początkowego zbiega do różnych wartości.
+		\begin{figure}[h]
+			\begin{center}
+				\subfigure[$|\lambda _1|,|\lambda _2| < 1$ - stabilny]{
+					\includegraphics[width=0.4\linewidth]{img/portret_stabilny.jpg}}
+				\subfigure[$|\lambda _1| > 1$ - niestabilny]{
+					\includegraphics[width=0.4\linewidth]{img/portret_niestabilny.jpg}}
+				\subfigure[$|\lambda _1|,|\lambda _2| = 1$ - oscylacje]{
+					\includegraphics[width=0.4\linewidth]{img/portret_oscylacje.jpg}}
+				\subfigure[$|\lambda _1| = 1, |\lambda _2|<1$ - zbiega do różnych punktów w zależności od punktu początkowego]{
+					\includegraphics[width=0.4\linewidth]{img/portret_pol_oscylacje.jpg}}
+				\caption{Portrety fazowe dla różnych $\lambda$}
+			\end{center}
+		\end{figure}
+		\item Jeśli układ jest stabilny, trajektorie rozpoczynające się od punktu początkowego położonego na okręgu jednostkowym od drugiej iteracji nie wychodzą już poza $Az(\theta)$. 
+	\end{itemize}
+	
+	
+	
 	
 \end{document}
 
