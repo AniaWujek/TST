@@ -1,4 +1,4 @@
-function a = okrag_jednostkowy(macierzA, figura) 
+function okrag_jednostkowy(macierzA, figura) 
     
     figure(figura);
     hold on;

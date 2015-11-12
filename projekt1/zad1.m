@@ -1,11 +1,14 @@
 close all;
+%1 jesli wyswietlac na konsole dane, 0 - tylko zrobic wykresy
 konsola = 0;
+%1 jesli widmo macierzy jest zespolone
 zespolone = 0;
-portret_okregi = 1;
+%1 jesli chcemy na jednym wykresie portret fazowy, okrag jednostkowy i Az(theta)
+portret_okregi = 0;
 
 %konstruowanie macierzy o zadanym widmie
-widmo = [-1 0.1];
-wektory_wl = [0.1 0.2 ; 3.2 -0.4];
+widmo = [-0.3 -0.5];
+wektory_wl = [0.5 1 ; 0.3 -0.7];
 A = macierz_z_widma(widmo,wektory_wl);
 
 if konsola
@@ -30,7 +33,7 @@ if konsola
 end
 
 %okreslanie zbioru punktow poczatkowych na okregu
-promien_okregu = 1;
+promien_okregu = 2;
 liczba_punktow = 10;
 p0 = generuj_punkty_pocz(promien_okregu,liczba_punktow);
 
@@ -70,7 +73,7 @@ if !any(any(imag(A)))
         f2=figure(2);
         hold on;
         set(f2,'Name','Okrag jednostkowy Az(theta)','NumberTitle','off');
-        okrag_jednostkowy(A,1);
+        okrag_jednostkowy(A,2);
         legend('okrąg Az(theta)','okrąg jednostkowy');
     end
 end
@@ -98,6 +101,7 @@ if !any(any(imag(A)))
     hold on;
     set(f5,'Name','Pole wektorowe','NumberTitle','off');
     rysuj_pole_wektorowe(pX,pY,A,5);
+    
 end
 
 

@@ -1,4 +1,4 @@
-function [wektoryX wektoryY] = rysuj_trajektorie(punkty_pocz, macierzA, figura, liczba_krokow) 
+function rysuj_trajektorie(punkty_pocz, macierzA, figura, liczba_krokow) 
     
     figure(figura);
     hold on;
